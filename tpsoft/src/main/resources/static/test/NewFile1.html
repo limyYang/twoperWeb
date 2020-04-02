@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+<div id="result"></div>
+<input type="file" id="file">
+<input type="button" value="上传" onclick="uploadFile()">
+
+<script>
+function uploadFile(){
+	var file = $('#file')[0].file[0];
+	var data=new FormData();
+	data.append("file",file);
+	$.ajax({
+		type:'post',
+		url:'/upload',
+		processData:false,
+		contentType:false,
+		data:data,
+		success:function(msg){
+			$('#result').html(msg);
+		}
+		
+		
+	});
+	
+	
+	
+}
+
+</script>
+
+</body>
+</html>
